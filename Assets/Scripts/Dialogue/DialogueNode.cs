@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Character;
 using Core;
 using Misc;
 using Sirenix.OdinInspector;
@@ -101,6 +102,9 @@ namespace Dialogue
             {
                 Undo.RecordObject(this, "Change Dialogue Speaker");
                 isPlayerSpeaking = value;
+                speaker = isPlayerSpeaking
+                    ? Player.Instance.GetComponent<PlayerConversant>().PlayerName
+                    : FindObjectOfType<AIConversant>().ConversantName;
                 //speaker = isPlayerSpeaking ? Actors.Player : Actors.SomeNpc;
                 //isPlayerSpeaking = value;
                 Utils.MarkAsDirty(this);

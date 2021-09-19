@@ -9,6 +9,7 @@ using UnityEngine;
 
 namespace Dialogue.Editor
 {
+    [Serializable]
     public class DialogueEditor : ScriptableObject
     {
         [NonSerialized] private GUIStyle style;
@@ -88,6 +89,7 @@ namespace Dialogue.Editor
                 return;
 
             SelectedDialogue = newDialogue;
+            // AssetDatabase.SaveAssets();
         }
 
         /// <summary>
@@ -139,6 +141,11 @@ namespace Dialogue.Editor
                     //     selectedDialogue.DeleteNode(deletingNode);
                     //     deletingNode = null;
                     // }
+                }
+
+                if (GUILayout.Button("Save"))
+                {
+                    AssetDatabase.SaveAssets();
                 }
             }
 

@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-5885746802646096402
+--- !u!114 &-1905697116421277874
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -10,19 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0747cfd512474f9fa7637aa46190acab, type: 3}
-  m_Name: 2bedff4f-dbdd-4920-9315-ec48bfb38142
+  m_Name: 0bf2a6b2-af58-4b59-823b-6eeb1fd76b01
   m_EditorClassIdentifier: 
-  text: What the freak?
-  speaker: Suspicious Guard
+  text: 
+  speaker: 
   onEnterAction: 4
   onExitAction: 4
   conditions: []
   children:
-  - 3e40d241-f66a-4f22-abd2-1b9622043497
-  - 8a627c60-d040-4ee4-8020-fbbd55f9e8bd
+  - 64033d4a-8aab-4f7d-8bdd-d5772b4f8b2f
   position:
-    x: 102
-    y: 169
+    x: 279
+    y: 271
   size:
     width: 140
     height: 40
@@ -37,19 +36,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a64e3aa74f124b07a65607ea4f200782, type: 3}
-  m_Name: Test Dialogue
+  m_Name: Dialogue
   m_EditorClassIdentifier: 
-  id: 5683uPb_BEKUl50Tdcn7EQ
+  id: Rb-TmXk3YEyoSNTXe7NizQ
   title: 
   description: 
   nodes:
-  - {fileID: -5885746802646096402}
-  - {fileID: 3881397126979292378}
-  - {fileID: 7143115642766930883}
+  - {fileID: -1905697116421277874}
+  - {fileID: 2554146188437860527}
   playerColor: {fileID: 2800000, guid: 2f6d4a4b9274a934481fe6333d1bd7f7, type: 3}
   npcColor: {fileID: 2800000, guid: 34efd532986bd44498d38cd687cf865e, type: 3}
   nodeConnectionColor: {fileID: 2800000, guid: aa3cedd7cdf7ce8439b94e980a036e2f, type: 3}
---- !u!114 &3881397126979292378
+--- !u!114 &2554146188437860527
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -59,42 +57,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0747cfd512474f9fa7637aa46190acab, type: 3}
-  m_Name: 3e40d241-f66a-4f22-abd2-1b9622043497
+  m_Name: 64033d4a-8aab-4f7d-8bdd-d5772b4f8b2f
   m_EditorClassIdentifier: 
-  text: Who are you pal?
-  speaker: Stan
+  text: 
+  speaker: Herbert
   onEnterAction: 4
   onExitAction: 4
   conditions: []
   children: []
   position:
-    x: 352
-    y: 90
-  size:
-    width: 140
-    height: 40
-  outPos: {x: 0, y: 0}
---- !u!114 &7143115642766930883
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0747cfd512474f9fa7637aa46190acab, type: 3}
-  m_Name: 8a627c60-d040-4ee4-8020-fbbd55f9e8bd
-  m_EditorClassIdentifier: 
-  text: You're not fraom around here!
-  speaker: Stan
-  onEnterAction: 4
-  onExitAction: 4
-  conditions: []
-  children: []
-  position:
-    x: 327
-    y: 254
+    x: 529
+    y: 271
   size:
     width: 140
     height: 40

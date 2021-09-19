@@ -1,12 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using Dialogue.Attributes;
 using Dialogue.GUI;
 using Misc;
 using Sirenix.OdinInspector;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.UIElements;
+using PopupWindow = UnityEditor.PopupWindow;
 
 namespace Dialogue
 {
@@ -139,13 +142,19 @@ namespace Dialogue
 
         private void OnValidate()
         {
+            EditorApplication.delayCall -= AssetDatabase.SaveAssets;
+            EditorApplication.delayCall += AssetDatabase.SaveAssets;
+            
             if (ID == "")
                 ID = Guid.NewGuid().ToTinyUuid();
 
             nodeLookup.Clear();
 
             foreach (var node in nodes)
-                nodeLookup[node.name] = node;
+            {
+                if (node != null)
+                    nodeLookup[node.name] = node;
+            }
 
             if (PlayerColor == null)
                 PlayerColor = DialogueEditorGUI.orangeButton;
@@ -237,6 +246,12 @@ namespace Dialogue
             newNode.Text = "";
             nodes.Add(newNode);
             OnValidate();
+
+            foreach (DialogueNode node in nodes)
+                node.IsSelected = false;
+            
+            newNode.IsSelected = true;
+            
             Save();
         }
 
@@ -250,6 +265,7 @@ namespace Dialogue
                 parent.AddChild(newNode.name);
                 newNode.Parent = parent;
                 newNode.IsPlayerSpeaking = !parent.IsPlayerSpeaking;
+
                 newNode.SetPosition(parent.Rect.position + newNodeOffset, Grid.GridSnapSize);
 
                 if (parent.Children.Count > 1)

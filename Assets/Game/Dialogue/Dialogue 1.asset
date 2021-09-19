@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a64e3aa74f124b07a65607ea4f200782, type: 3}
+  m_Name: Dialogue 1
+  m_EditorClassIdentifier: 
+  id: DR8kAd0ivkSOLMRkwE_YYQ
+  title: 
+  description: 
+  nodes:
+  - {fileID: 6998975925227351496}
+  playerColor: {fileID: 2800000, guid: 2f6d4a4b9274a934481fe6333d1bd7f7, type: 3}
+  npcColor: {fileID: 2800000, guid: 34efd532986bd44498d38cd687cf865e, type: 3}
+  nodeConnectionColor: {fileID: 2800000, guid: aa3cedd7cdf7ce8439b94e980a036e2f, type: 3}
+--- !u!114 &6998975925227351496
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0747cfd512474f9fa7637aa46190acab, type: 3}
+  m_Name: fdfbcadb-cf9d-4b51-8c2f-1e0ed2b4760d
+  m_EditorClassIdentifier: 
+  text: 
+  speaker: 
+  onEnterAction: 4
+  onExitAction: 4
+  conditions: []
+  children: []
+  position:
+    x: 0
+    y: 0
+  size:
+    width: 140
+    height: 40
+  outPos: {x: 0, y: 0}

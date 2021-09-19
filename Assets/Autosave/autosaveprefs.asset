@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enable: 1
   log: 1
-  onPlay: 1
+  onPlay: 0
   interval: 10

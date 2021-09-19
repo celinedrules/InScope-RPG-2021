@@ -16,12 +16,12 @@ namespace Dialogue.Editor
 
         private const string DialoguePath = "Assets/Game/Dialogue";
         private const string DatabasePath = "Assets/Game/Dialogue";
-        
+
         private readonly DrawSelected<DialogueEditor> dialogues = new DrawSelected<DialogueEditor>();
 
         //private DrawVariable drawVariable = new DrawVariable();
         private readonly DrawSelected<VariableEditor> variables = new DrawSelected<VariableEditor>();
-        
+
         private DialogueEditor dialogueEditor;
         private VariableEditor variableEditor;
         private int enumIndex;
@@ -35,8 +35,16 @@ namespace Dialogue.Editor
 
         protected override void OnEnable()
         {
-            dialogueEditor = CreateInstance<DialogueEditor>();
-            variableEditor = CreateInstance<VariableEditor>();
+            CreateEditors();
+        }
+
+        private void CreateEditors()
+        {
+            if (dialogueEditor == null)
+                dialogueEditor = CreateInstance<DialogueEditor>();
+
+            if (variableEditor == null)
+                variableEditor = CreateInstance<VariableEditor>();
         }
 
         protected override void OnGUI()
@@ -65,12 +73,12 @@ namespace Dialogue.Editor
 
             if (iteration < 1)
                 iteration++;
-            
+
             base.OnGUI();
         }
 
-        [MenuItem("Window/Dialogue Manager")]
-        private static void ShowWindow() => GetWindow<DialogueManagerEditor>(false, "Dialogue Manager");
+        [MenuItem("Window/Dialogue Manager %&d")]
+        private static void ShowWindow() => GetWindow<DialogueManagerEditor>("Dialogue Manager", typeof(SceneView));
 
         protected override void Initialize()
         {
@@ -80,7 +88,7 @@ namespace Dialogue.Editor
         }
 
         private Dialogue currentDialogue;
-        
+
         protected override void DrawEditors()
         {
             switch (managerState)
@@ -100,11 +108,18 @@ namespace Dialogue.Editor
                 case ManagerState.Quests:
                     break;
                 case ManagerState.Variables:
+                    if (variableEditor == null)
+                        CreateEditors();
+
                     variables.SetSelected(variableEditor);
                     variableEditor.UpdateVariables();
                     break;
                 case ManagerState.Dialogues:
+                    if (dialogueEditor == null)
+                        CreateEditors();
+
                     Dialogue dg = MenuTree.Selection.SelectedValue as Dialogue;
+
                     if (dg != currentDialogue)
                     {
                         Selection.activeObject = dg;
@@ -113,11 +128,12 @@ namespace Dialogue.Editor
                     }
 
                     dialogues.SetSelected(dialogueEditor);
-                    
+
                     break;
             }
-            
-            DrawEditor((int) managerState);
+
+            //if (Selection.activeObject != null)
+            DrawEditor((int)managerState);
         }
 
         protected override IEnumerable<object> GetTargets()
@@ -205,13 +221,14 @@ namespace Dialogue.Editor
         [DisableContextMenu()]
         [SerializeField] private T selected;
 
-        [LabelWidth(100)] [PropertyOrder(-1)] [SerializeField] [ShowIf("@selected.GetType() != typeof(VariableEditor)")]
+        [LabelWidth(100)] [PropertyOrder(-1)]
+        [SerializeField] [ShowIf("@selected?.GetType() != typeof(VariableEditor)")]
         [HorizontalGroup("CreateNew")]
         private string nameForNew;
 
         private string path;
 
-        [Button] [ShowIf("@selected.GetType() != typeof(VariableEditor)")]
+        [Button] [ShowIf("@selected?.GetType() != typeof(VariableEditor)")]
         [HorizontalGroup("CreateNew")]
         public void CreateNew()
         {
@@ -230,7 +247,7 @@ namespace Dialogue.Editor
             nameForNew = "";
         }
 
-        [Button] [ShowIf("@selected.GetType() != typeof(VariableEditor)")]
+        [Button] [ShowIf("@selected?.GetType() != typeof(VariableEditor)")]
         [HorizontalGroup("CreateNew")]
         public void DeleteSelected()
         {
